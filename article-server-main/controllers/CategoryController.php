@@ -5,18 +5,15 @@ require(__DIR__ . "/../connection/connection.php");
 require(__DIR__ . "/../services/CategoriesService.php");
 require(__DIR__ . "/../services/ResponseService.php");
 
-class CategoryController{
+class CategoryController extends BaseController{
     global $mysqli;
     public function getAllCategories(){
-        try {
             if(!isset($_GET["id"])){
             $categories = Category::all($mysqli);
             $categories_array = ControlerService::articlesToArray($categories); 
-            echo ResponseService::success_response($categories_array);
+            echo ResponseService::success_response($categories_array); //should comment those but not now
             return;
         }
-        } catch () 
-            echo ResponseService::internal_server_error_response("internal server error");
         
 
         $id = $_GET["id"];

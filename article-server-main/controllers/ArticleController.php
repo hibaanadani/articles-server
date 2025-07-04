@@ -5,10 +5,9 @@ require(__DIR__ . "/../connection/connection.php");
 require(__DIR__ . "/../services/ArticleService.php");
 require(__DIR__ . "/../services/ResponseService.php");
 
-class ArticleController{
+class ArticleController extends BaseController{
     global $mysqli;
     public function getArticle(){
-        global $mysqli;
 
         if(!isset($_GET["id"])){
             $articles = Article::all($mysqli);
